@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Project Details - JD</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #0056b3;
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        input {
+            width: 70%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        input:hover {
+            border-color: #0056b3;
+        }
+
+        .output {
+            font-weight: bold;
+            color: #0056b3;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            th, td {
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+
+            input {
+                padding: 6px;
+                font-size: 12px;
+                width: 100%;
+            }
+
+            .output {
+                font-size: 13px;
+                padding-left: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Construction Project Details - JD</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Input Fields</th>
+                    <th>Value</th>
+                    <th>Output Fields</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Acres</td>
+                    <td><input type="number" id="acres" value="1.00" oninput="calculateOutputs()"></td>
+                    <td>Construction Sft</td>
+                    <td id="constructionSft" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>FAR</td>
+                    <td><input type="number" id="far" value="2.75" oninput="calculateOutputs()"></td>
+                    <td>Developer Share</td>
+                    <td id="developerShare" class="output">0%</td>
+                </tr>
+                <tr>
+                    <td>Owner Share</td>
+                    <td><input type="number" id="ownerShare" value="45" oninput="calculateOutputs()"></td>
+                    <td>Owner Sqft</td>
+                    <td id="ownerSqft" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Land Cost/Acre</td>
+                    <td><input type="number" id="landCostAcre" value="0.00" oninput="calculateOutputs()"></td>
+                    <td>Developer Sqft</td>
+                    <td id="developerSqft" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Refundable Advance</td>
+                    <td><input type="number" id="refundableAdvance" value="15600000" oninput="calculateOutputs()"></td>
+                    <td>Construction Cost</td>
+                    <td id="constructionCost" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Goodwill</td>
+                    <td><input type="number" id="goodwill" value="10000000" oninput="calculateOutputs()"></td>
+                    <td>Total Expenses</td>
+                    <td id="totalExpenses" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Construction Cost/Sft</td>
+                    <td><input type="number" id="constructionCostSft" value="3200" oninput="calculateOutputs()"></td>
+                    <td>Total Investment</td>
+                    <td id="totalInvestment" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Site Development Cost</td>
+                    <td><input type="number" id="siteDevelopmentCost" value="15600000" oninput="calculateOutputs()"></td>
+                    <td>Development Cost/Sft</td>
+                    <td id="developmentCostSft" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Interest</td>
+                    <td><input type="number" id="interest" value="0.00" oninput="calculateOutputs()"></td>
+                    <td>Land Owner Realization</td>
+                    <td id="landOwnerRealization" class="output">0</td>
+                </tr>
+                <tr>
+                    <td>Sale Price/Sqft</td>
+                    <td><input type="number" id="salePriceSqft" value="8000" oninput="calculateOutputs()"></td>
+                    <td>Net Land Owner Realization</td>
+                    <td id="netLandOwnerRealization" class="output">0</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Developer Realization</td>
+                    <td id="developerRealization" class="output">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Construction Estimator. All rights reserved.
+    </div>
+
+    <script>
+        function calculateOutputs() {
+            const acres = parseFloat(document.getElementById('acres').value);
+            const far = parseFloat(document.getElementById('far').value);
+            const ownerShare = parseFloat(document.getElementById('ownerShare').value) / 100;
+            const constructionCostSft = parseFloat(document.getElementById('constructionCostSft').value);
+            const siteDevelopmentCost = parseFloat(document.getElementById('siteDevelopmentCost').value);
+            const refundableAdvance = parseFloat(document.getElementById('refundableAdvance').value);
+            const goodwill = parseFloat(document.getElementById('goodwill').value);
+            const salePriceSqft = parseFloat(document.getElementById('salePriceSqft').value);
+
+            // Calculating output fields
+            const constructionSft = acres * far * 43560;
+            const developerShare = 1 - ownerShare;
+            const ownerSqft = constructionSft * ownerShare;
+            const developerSqft = constructionSft * developerShare;
+            const constructionCost = constructionSft * constructionCostSft;
+            const totalExpenses = constructionCost + siteDevelopmentCost;
+            const totalInvestment = totalExpenses + refundableAdvance + goodwill;
+            const developmentCostSft = totalInvestment / constructionSft;
+            const landOwnerRealization = ownerSqft * salePriceSqft;
+            const netLandOwnerRealization = landOwnerRealization + (goodwill || 0);
+            const developerRealization = developerSqft * salePriceSqft;
+
+            // Formatting numbers with commas
+            const formatNumber = (num) => {
+                return num.toLocaleString();
+            };
+
+            // Updating output fields in the DOM
+            document.getElementById('constructionSft').innerText = formatNumber(constructionSft.toFixed(2));
+            document.getElementById('developerShare').innerText = (developerShare * 100).toFixed(2) + '%';
+            document.getElementById('ownerSqft').innerText = formatNumber(ownerSqft.toFixed(2));
+            document.getElementById('developerSqft').innerText = formatNumber(developerSqft.toFixed(2));
+            document.getElementById('constructionCost').innerText = formatNumber(constructionCost.toFixed(2));
+            document
